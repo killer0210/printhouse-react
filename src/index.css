@@ -15,8 +15,8 @@
     --border-light: #f0f0f0;
     --border-mid: #e0e0e0;
     --border-dark: #d0d0d0;
-    --glass-bg: rgba(255, 255, 255, 0.3);
-    --shadow-glass: 0.6rem -0.6rem 1rem rgba(255, 255, 255, 0.3);
+    --glass-bg: rgba(255,255,255,0.30);
+    --glass-shadow: rgba(255,255,255,0.18);
 }
 
 body {
@@ -35,7 +35,7 @@ body {
 .tag {
     position: relative;
 }
-.tag::after {
+/* .tag::after {
     content: '';
     position: absolute;
     top: 0;
@@ -46,12 +46,22 @@ body {
     background: transparent;
     border-radius: 0 100% 0 0;
     z-index: 99;
-    box-shadow: 0.6rem -0.6rem 1rem rgba(255, 255, 255, 0.3);
-}
+    box-shadow:0.6rem -0.6rem 1rem var(--glass-shadow);
+    filter: blur(2px);
 
-.hero-overlay-glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
+    border-radius:0 100% 0 0;
+} */
+
+/* Том шилэн хэлбэр – харагдах хэсэг */
+.tag-right-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 1;
+    border-bottom-left-radius: 100px;
+    corner-shape: scoop;
 }
 
 .bg-gradient-primary {
@@ -63,6 +73,15 @@ body {
         var(--secondary-color),
         var(--primary-color)
     );
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Timeline */
