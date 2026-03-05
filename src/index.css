@@ -15,6 +15,8 @@
     --border-light: #f0f0f0;
     --border-mid: #e0e0e0;
     --border-dark: #d0d0d0;
+    --glass-bg: rgba(255, 255, 255, 0.3);
+    --shadow-glass: 0.6rem -0.6rem 1rem rgba(255, 255, 255, 0.3);
 }
 
 body {
@@ -29,6 +31,7 @@ body {
         transform: translateX(-50%);
     }
 }
+
 .tag {
     position: relative;
 }
@@ -41,9 +44,14 @@ body {
     width: 2rem;
     height: 2rem;
     background: transparent;
-    border-radius: 0 100% 0 0 ;
+    border-radius: 0 100% 0 0;
     z-index: 99;
-    box-shadow: 0.6rem -0.6rem var(--primary-color, #00AEEF);
+    box-shadow: 0.6rem -0.6rem 1rem rgba(255, 255, 255, 0.3);
+}
+
+.hero-overlay-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
 }
 
 .bg-gradient-primary {
