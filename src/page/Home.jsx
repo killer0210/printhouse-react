@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import React, { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import hero_image from '../assets/png/preview.png'
+import hero_image from "../assets/png/preview.png";
 import {
   book_10,
   setguul_6,
@@ -50,7 +50,7 @@ const products = [
   {
     id: 3,
     name: "Сэтгүүл",
-    image:setguul_6,
+    image: setguul_6,
   },
   {
     id: 4,
@@ -120,12 +120,30 @@ const products = [
   },
 ];
 
-
-
 const Home = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef(null);
+  const move = (e) => {
+    const rect = ref.current.getBoundingClientRect();
 
-    const [isHovered, setIsHovered] = useState(false);
-    
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = (y / rect.height - 0.5) * 20;
+    const rotateY = (x / rect.width - 0.5) * 20;
+
+    ref.current.style.transform = `
+        perspective(300px)
+        rotateX(${-rotateX}deg)
+        rotateY(${rotateY}deg)
+      `;
+  };
+
+  const leave = () => {
+    ref.current.style.transform =
+      "perspective(300px) rotateX(0deg) rotateY(0deg)";
+  };
+
   return (
     <>
       <section className="bg-gradient-primary text-white text-center">
@@ -173,8 +191,18 @@ const Home = () => {
               <div className="tag-right-top bg-white/30 backdrop-blur-md"></div>
             </div>
             <div className=" col-start-4 col-end-7 row-start-1 row-end-7 rounded-tr-3xl rounded-bl-3xl rounded-br-3xl bg-white/30 backdrop-blur-md">
-            <div >
-            <img src={hero_image} alt="" className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out" /></div>
+              <div
+                ref={ref}
+                onMouseMove={move}
+                onMouseLeave={leave}
+                className="w-[600px] h-[600px] transition-transform duration-200 flex items-center justify-center"
+              >
+                <img
+                  src={hero_image}
+                  alt=""
+                  className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -266,13 +294,21 @@ const Home = () => {
               </a>
             </div>
             <div className="w-full overflow-x-auto scrollbar-hide">
-              <Swiper slidesPerView={3.5} spaceBetween={16} className="relative rounded-lg overflow-hidden h-[200px]">
-              <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black to-transparent z-10 " />
-              <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black to-transparent z-10" />
+              <Swiper
+                slidesPerView={3.5}
+                spaceBetween={16}
+                className="relative rounded-lg overflow-hidden h-[200px]"
+              >
+                <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black to-transparent z-10 " />
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black to-transparent z-10" />
                 {products.map((product) => (
-                  <SwiperSlide key={product.id} >
+                  <SwiperSlide key={product.id}>
                     <div className=" rounded-lg overflow-hidden relative shrink-0 cursor-pointer group h-full">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" />
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                      />
                     </div>
                     <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black/80 to-transparent z-10 flex items-end justify-center rounded-b-lg">
                       <h3 className="text-white text-xl font-large p-4">
@@ -292,7 +328,10 @@ const Home = () => {
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="flex items-center justify-between w-full mb-6 ">
             <h2 className=" text-4xl font-semibold">Ашигладаг технологи</h2>
-            <a href="#" className="text- text-sm font-medium hover:border-b-2 border-black">
+            <a
+              href="#"
+              className="text- text-sm font-medium hover:border-b-2 border-black"
+            >
               <span className="mr-2">Бүгд</span>
               <i className="fa-solid fa-arrow-right"></i>
             </a>
@@ -376,23 +415,25 @@ const Home = () => {
       {/* PRICING CTA */}
       <section className="w-full">
         <div className="max-w-[1200px] mx-auto px-5  ">
-            <div className="flex items-center justify-between w-full gap-8 bg-[var(--secondary-color,#0064F0)] text-white rounded-xl overflow-hidden py-12 px-6">
+          <div className="flex items-center justify-between w-full gap-8 bg-[var(--secondary-color,#0064F0)] text-white rounded-xl overflow-hidden py-12 px-6">
             <div className="w-1/2">
-            <h2 className="text-4xl font-semibold">Үнийн санал &</h2>
-            <p className="text-lg mt-2">
-              Загвар,хэмжээ, материал, тоо ширхэгээ оруулаад шууд үнэ санал авах
-            </p>
-            <button className="px-7 py-3.5 rounded-lg border-none cursor-pointer mt-5 bg-gray-900 text-white font-medium hover:opacity-90">
-              
-              
-              <span >Үнэ санал авах</span>
-              
-            </button>
-          </div>
-          <div className="w-1/2 overflow-hidden ">
-            <img src={book_25} alt="" className="w-full h-full object-cover" />
-          </div>
+              <h2 className="text-4xl font-semibold">Үнийн санал &</h2>
+              <p className="text-lg mt-2">
+                Загвар,хэмжээ, материал, тоо ширхэгээ оруулаад шууд үнэ санал
+                авах
+              </p>
+              <button className="px-7 py-3.5 rounded-lg border-none cursor-pointer mt-5 bg-gray-900 text-white font-medium hover:opacity-90">
+                <span>Үнэ санал авах</span>
+              </button>
             </div>
+            <div className="w-1/2 overflow-hidden ">
+              <img
+                src={book_25}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -477,7 +518,7 @@ const Home = () => {
       {/* WHAT WE DO */}
       <section className="py-12">
         <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white p-8 rounded-2xl">
+          <div className="bg-white p-8 rounded-2xl">
             <h3 className="text-lg font-semibold mb-2">🎨 Дизайн</h3>
             <p>Мэргэжлийн дизайн үйлчилгээ</p>
           </div>
