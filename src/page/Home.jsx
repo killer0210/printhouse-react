@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 
-import hero_image from "../assets/png/preview.png";
+import hero_image from "../assets/imgages/h1_deco.png";
 import {
   book_10,
   setguul_6,
@@ -33,6 +34,7 @@ import {
   logos_төрийн_банк,
   alibom_5,
 } from "../assets";
+import design from "../assets/imgages/h6_img1.png";
 
 const products = [
   {
@@ -147,8 +149,8 @@ const Home = () => {
   return (
     <>
       <section className="bg-gradient-primary text-white text-center">
-        <div className="max-w-[1200px] mx-auto px-5 py-5">
-          <div className="grid grid-cols-6 grid-rows-6  h-[600px]">
+        <div className="max-w-[1400px] mx-auto px-5 py-5">
+          <div className="grid grid-cols-6 grid-rows-6  h-[700px]">
             <div className="col-start-1 col-end-4 row-start-1 row-end-6 rounded-tl-3xl rounded-bl-3xl overflow-hidden relative">
               <div
                 className="absolute inset-0 rounded-tl-3xl rounded-bl-3xl bg-white/30 backdrop-blur-md"
@@ -200,7 +202,7 @@ const Home = () => {
                 <img
                   src={hero_image}
                   alt=""
-                  className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+                  className="w-full h-full object-contain "
                 />
               </div>
             </div>
@@ -208,80 +210,111 @@ const Home = () => {
         </div>
       </section>
       <section className="py-12 px-4">
-        <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-4 grid-rows-4 gap-[15px] h-[600px]">
-          <div className="col-start-1 col-end-3 row-start-1 row-end-2 flex items-center justify-start px-4">
-            <h2 className="text-4xl font-semibold">
-              ОНЦЛОХ <br /> БҮТЭЭГДЭХҮҮНҮҮД
-            </h2>
+        <div className="max-w-[1400px] mx-auto px-5 grid grid-cols-4 grid-rows-4 gap-[15px] h-[700px]">
+          <div className="col-start-1 col-end-3 row-start-1 row-end-2  border border-black rounded-lg justify-start px-4 relative">
+            <h2 className="text-4xl font-semibold mt-6 mx-2">БҮТЭЭГДЭХҮҮН</h2>
+            <Link to="/products">
+              <div className="absolute right-0 bottom-0 w-10 h-10 m-4 rounded-full border border-black flex items-center justify-center cursor-pointer group rotate-45 hover:rotate-225 transition-transform duration-300 ease-in-out">
+                {/* <span className="text-sm font-medium absolute right-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">Бүгд</span> */}
+                <i className="fa-solid fa-arrow-right"></i>
+              </div>
+            </Link>
           </div>
-          <div className="col-start-3 col-end-4 row-start-1 row-end-2 bg-gray-200 rounded-lg overflow-hidden relative">
+          <div className="col-start-3 col-end-4 row-start-1 row-end-2 bg-gray-200 rounded-lg overflow-hidden relative group">
             <img
               src={book_10}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Ном</h3>
+            </div>
           </div>
-          <div className="col-start-4 col-end-5 row-start-1 row-end-3 bg-green-500 rounded-lg overflow-hidden">
+          <div className="col-start-4 col-end-5 row-start-1 row-end-3 bg-green-500 rounded-lg overflow-hidden relative group">
             <img
               src={setguul_6}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Сэтгүүл</h3>
+            </div>
           </div>
-          <div className="col-start-3 col-end-4 row-start-2 row-end-4 bg-red-500 rounded-lg overflow-hidden">
+          <div className="col-start-3 col-end-4 row-start-2 row-end-4 bg-red-500 rounded-lg overflow-hidden relative group">
             <img
               src={tailan_4}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Тайлан</h3>
+            </div>
           </div>
-          <div className="col-start-4 col-end-5 row-start-3 row-end-5 bg-yellow-500 rounded-lg overflow-hidden">
+          <div className="col-start-4 col-end-5 row-start-3 row-end-5 bg-yellow-500 rounded-lg overflow-hidden relative group">
             <img
               src={book_12}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Ном</h3>
+            </div>
           </div>
-          <div className="col-start-3 col-end-4 row-start-4 row-end-5 bg-purple-500 rounded-lg overflow-hidden">
+          <div className="col-start-3 col-end-4 row-start-4 row-end-5 bg-purple-500 rounded-lg overflow-hidden relative group">
             <img
               src={book_18}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Ном</h3>
+            </div>
           </div>
-          <div className="col-start-2 col-end-3 row-start-2 row-end-3 bg-pink-500 rounded-lg overflow-hidden">
+          <div className="col-start-2 col-end-3 row-start-2 row-end-3 bg-pink-500 rounded-lg overflow-hidden relative group">
             <img
               src={tailan_6}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Тайлан</h3>
+            </div>
           </div>
-          <div className="col-start-2 col-end-3 row-start-3 row-end-5 bg-blue-500 rounded-lg overflow-hidden">
+          <div className="col-start-2 col-end-3 row-start-3 row-end-5 bg-blue-500 rounded-lg overflow-hidden relative group">
             <img
               src={book_19}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Ном</h3>
+            </div>
           </div>
-          <div className="col-start-1 col-end-2 row-start-4 row-end-5 bg-gray-500 rounded-lg overflow-hidden">
+          <div className="col-start-1 col-end-2 row-start-4 row-end-5 bg-gray-500 rounded-lg overflow-hidden relative group">
             <img
               src={book_20}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Ном</h3>
+            </div>
           </div>
-          <div className="col-start-1 col-end-2 row-start-2 row-end-4 bg-gray-500 rounded-lg overflow-hidden">
+          <div className="col-start-1 col-end-2 row-start-2 row-end-4 bg-gray-500 rounded-lg overflow-hidden relative group">
             <img
               src={setguul_7}
               alt=""
-              className="w-full h-full object-cover hover:scale-105 transition-all duration-300 ease-in-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-in-out"
             />
+            <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
+              <h3 className="text-white text-2xl font-semibold p-4">Сэтгүүл</h3>
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="max-w-[1200px] mx-auto px-4">
+      {/* <section>
+        <div className="max-w-[1400px] mx-auto px-4">
           <div className="bg-[#0064F0] text-white py-12 px-5 rounded-xl">
             <div className="flex items-center justify-between w-full mb-6">
               <h2 className="text-4xl font-semibold ">Бүтээгдэхүүн</h2>
@@ -295,7 +328,7 @@ const Home = () => {
             </div>
             <div className="w-full overflow-x-auto scrollbar-hide">
               <Swiper
-                slidesPerView={3.5}
+                slidesPerView={4.5}
                 spaceBetween={16}
                 className="relative rounded-lg overflow-hidden h-[200px]"
               >
@@ -321,11 +354,11 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* TECHNOLOGY */}
       <section className="py-12">
-        <div className="max-w-[1200px] mx-auto px-5">
+        <div className="max-w-[1400px] mx-auto px-5">
           <div className="flex items-center justify-between w-full mb-6 ">
             <h2 className=" text-4xl font-semibold">Ашигладаг технологи</h2>
             <a
@@ -337,11 +370,11 @@ const Home = () => {
             </a>
           </div>
           <div className="grid grid-cols-4 grid-rows-3 gap-[15px] h-[600px] ">
-            <div className="row-start-1 row-end-2 col-start-1 col-end-3 rounded-lg overflow-hidden relative">
+            <div className="row-start-1 row-end-2 col-start-1 col-end-3 rounded-lg overflow-hidden relative group">
               <img
                 src={setguul_3}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 w-full h-full bg-black/50"></div>
               <h3 className="absolute top-0 right-0 text-white text-2xl p-4 ">
@@ -349,11 +382,11 @@ const Home = () => {
               </h3>
             </div>
 
-            <div className="row-start-1 row-end-3 col-start-3 col-end-5 rounded-lg overflow-hidden relative">
+            <div className="row-start-1 row-end-3 col-start-3 col-end-5 rounded-lg overflow-hidden relative group">
               <img
                 src={PrintMus_038}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 w-full h-full bg-black/50"></div>
               <h3 className="absolute top-0 right-0 text-white text-2xl p-4 ">
@@ -361,11 +394,11 @@ const Home = () => {
               </h3>
             </div>
 
-            <div className="row-start-2 row-end-3 col-start-1 col-end-3 rounded-lg overflow-hidden relative">
+            <div className="row-start-2 row-end-3 col-start-1 col-end-3 rounded-lg overflow-hidden relative group">
               <img
                 src={alibom_5}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 w-full h-full bg-black/50"></div>
               <h3 className="absolute top-0 right-0 text-white text-2xl p-4 ">
@@ -373,11 +406,11 @@ const Home = () => {
               </h3>
             </div>
 
-            <div className="row-start-3 row-end-4 col-start-1 col-end-2 rounded-lg overflow-hidden relative">
+            <div className="row-start-3 row-end-4 col-start-1 col-end-2 rounded-lg overflow-hidden relative group">
               <img
                 src={tailan_8}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 w-full h-full bg-black/50"></div>
               <h3 className="absolute top-0 right-0 text-white text-2xl p-4 ">
@@ -385,11 +418,11 @@ const Home = () => {
               </h3>
             </div>
 
-            <div className="row-start-3 row-end-4 col-start-2 col-end-3 rounded-lg overflow-hidden relative">
+            <div className="row-start-3 row-end-4 col-start-2 col-end-3 rounded-lg overflow-hidden relative group">
               <img
                 src={neriinhuudas_5}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-105"
               />
               <div className="absolute bottom-0 left-0 w-full h-full bg-black/50"></div>
               <h3 className="absolute top-0 right-0 text-white text-2xl p-4 ">
@@ -397,11 +430,11 @@ const Home = () => {
               </h3>
             </div>
 
-            <div className="row-start-3 row-end-4 col-start-3 col-end-5 rounded-lg overflow-hidden relative">
+            <div className="row-start-3 row-end-4 col-start-3 col-end-5 rounded-lg overflow-hidden relative group">
               <img
                 src={taniltsuulga_8}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-6 group-hover:scale-105 group-hover:object-contain"
               />
               <div className="absolute bottom-0 left-0 w-full h-full bg-black/50"></div>
               <h3 className="absolute top-0 right-0 text-white text-2xl p-4 ">
@@ -414,7 +447,7 @@ const Home = () => {
 
       {/* PRICING CTA */}
       <section className="w-full">
-        <div className="max-w-[1200px] mx-auto px-5  ">
+        <div className="max-w-[1400px] mx-auto px-5  ">
           <div className="flex items-center justify-between w-full gap-8 bg-[var(--secondary-color,#0064F0)] text-white rounded-xl overflow-hidden py-12 px-6">
             <div className="w-1/2">
               <h2 className="text-4xl font-semibold">Үнийн санал &</h2>
@@ -439,7 +472,7 @@ const Home = () => {
 
       {/* CLIENTS  */}
       <section className="bg-[#f9f9f9] py-10 w-full">
-        <div className="max-w-[1200px] mx-auto overflow-hidden px-4">
+        <div className="max-w-[1400px] mx-auto overflow-hidden px-4">
           <div className="flex gap-[60px] w-max animate-[scrollX_20s_linear_infinite] py-6">
             <div className="w-40 h-20 flex items-center justify-center shrink-0">
               <img
@@ -517,18 +550,24 @@ const Home = () => {
 
       {/* WHAT WE DO */}
       <section className="py-12">
-        <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-2xl">
-            <h3 className="text-lg font-semibold mb-2">🎨 Дизайн</h3>
-            <p>Мэргэжлийн дизайн үйлчилгээ</p>
+        <div className="max-w-[1400px] mx-auto px-5 gap-8 flex items-center justify-center">
+          <div className="flex-1 overflow-hidden">
+            <img src={design} alt="design" className="w-full h-full object-cover" />
+
           </div>
-          <div className="bg-white p-8 rounded-2xl">
-            <h3 className="text-lg font-semibold mb-2">📄 Хэвлэл</h3>
-            <p>Өндөр чанартай хэвлэл үйлдвэрлэл</p>
-          </div>
-          <div className="bg-white p-8 rounded-2xl">
-            <h3 className="text-lg font-semibold mb-2">🚚 Хүргэлт</h3>
-            <p>Хурдан, найдвартай хүргэлт</p>
+          <div className="flex-1">
+            <div className="bg-white p-8 rounded-2xl">
+              <h3 className="text-lg font-semibold mb-2">🎨 Дизайн</h3>
+              <p>Мэргэжлийн дизайн үйлчилгээ</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl">
+              <h3 className="text-lg font-semibold mb-2">📄 Хэвлэл</h3>
+              <p>Өндөр чанартай хэвлэл үйлдвэрлэл</p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl">
+              <h3 className="text-lg font-semibold mb-2">🚚 Хүргэлт</h3>
+              <p>Хурдан, найдвартай хүргэлт</p>
+            </div>
           </div>
         </div>
       </section>
