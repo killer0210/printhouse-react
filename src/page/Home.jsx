@@ -122,6 +122,34 @@ const products = [
   },
 ];
 
+const aboutFeatures = [
+  {
+    title: "Итгэл даасан түнш",
+    desc: "Урт хугацааны хамтын ажиллагаанд төвлөрсөн найдвартай үйлчилгээ.",
+    icon: "fa-handshake",
+  },
+  {
+    title: "Дэвшилтэт тоног төхөөрөмж",
+    desc: "Орчин үеийн техник, автомат шийдлээр хурд ба чанарыг зэрэг нэмэгдүүлнэ.",
+    icon: "fa-gears",
+  },
+  {
+    title: "ISO нэвтрүүлэгч",
+    desc: "ISO 9001:2015 чанарын удирдлагын тогтолцоог мөрдөн ажиллана.",
+    icon: "fa-certificate",
+  },
+  {
+    title: "Өндөр хүчин чадал",
+    desc: "Их хэмжээний захиалгыг богино хугацаанд тогтвортой гүйцэтгэнэ.",
+    icon: "fa-bolt",
+  },
+  {
+    title: "Туршлага",
+    desc: "Олон жилийн туршлага дээр суурилсан зөвлөгөө, шийдэл.",
+    icon: "fa-award",
+  },
+];
+
 const Home = () => {
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef(null);
@@ -173,12 +201,12 @@ const Home = () => {
                     Бүтээгдэхүүн
                   </button> */}
                   <button
-                type="button"
-                className="w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-colors shadow"
-                aria-label="Видео тоглуулах"
-              >
-                <span className="ml-1 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-[12px] border-l-gray-800" />
-              </button>
+                    type="button"
+                    className="w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-colors shadow"
+                    aria-label="Видео тоглуулах"
+                  >
+                    <span className="ml-1 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-[12px] border-l-gray-800" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -216,11 +244,60 @@ const Home = () => {
         </div>
       </section>
 
+      {/* AboutUs */}
+      <section className="py-12">
+        <div className="max-w-[1400px] mx-auto px-5">
+
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            <div className="space-y-4">
+              <p className="text-gray-700 leading-relaxed">
+                “Мөнхийн Үсэг” ХХК нь хэвлэлийн салбарт олон жилийн турш тогтвортой
+                үйл ажиллагаа явуулж, бүрэн автоматжсан үйлдвэрлэлээр чанартай
+                бүтээгдэхүүн, үйлчилгээг хүргэж байна.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Бид ISO 9001:2015 чанарын удирдлагын тогтолцоог нэвтрүүлэн
+                харилцагчдынхаа итгэлийг баталгаажуулдаг.
+              </p>
+              <Link
+              to="/about"
+              className="text-sm font-medium hover:border-b-2 border-black"
+            >
+              <span className="mr-2">Дэлгэрэнгүй</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </Link>
+              
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {aboutFeatures.map((f) => (
+                <div
+                  key={f.title}
+                  className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--secondary-color)]/10 flex items-center justify-center text-[var(--secondary-color)]">
+                      <i className={`fa-solid ${f.icon}`}></i>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{f.title}</h3>
+                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                        {f.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTS */}
-      <section className="py-12 px-4">
+      <section className="py-12">
         <div className="max-w-[1400px] mx-auto px-5 grid grid-cols-4 grid-rows-4 gap-[15px] h-[700px]">
           <div className="col-start-1 col-end-3 row-start-1 row-end-2  border border-[var(--secondary-color)] rounded-lg flex items-center px-4 relative">
-            <h2 className="text-4xl font-semibold ">БҮТЭЭГДЭХҮҮН</h2>
+            <h2 className="text-4xl font-semibold ">Бүтээгдэхүүн</h2>
             <Link to="/products">
               <div className="absolute right-0 bottom-0 w-10 h-10 m-4 rounded-full border border-[var(--secondary-color)]  flex items-center justify-center cursor-pointer group rotate-45 hover:rotate-225 transition-transform duration-300 ease-in-out">
                 {/* <span className="text-sm font-medium absolute right-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">Бүгд</span> */}
@@ -316,6 +393,84 @@ const Home = () => {
             />
             <div className="absolute bottom-0 left-0 w-full h-full bg-black/50 z-10 opacity-0 group-hover:opacity-100  transition-opacity duration-300 ease-in-out">
               <h3 className="text-white text-2xl font-semibold p-4">Сэтгүүл</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            {/* CLIENTS  */}
+            <section className="bg-[#f9f9f9] py-10 w-full">
+        <div className="max-w-[1400px] mx-auto overflow-hidden px-4">
+          <div className="flex gap-[60px] w-max animate-[scrollX_20s_linear_infinite] py-6">
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_gmobile}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_mobicom}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_skytel}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_голомт_банк}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_хаан_банк}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_хас_банк}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_оюу_толгой}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_төрийн_банк}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_gmobile}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </div>
+            <div className="w-40 h-20 flex items-center justify-center shrink-0">
+              <img
+                src={logos_mobicom}
+                alt="client"
+                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
             </div>
           </div>
         </div>
@@ -478,83 +633,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CLIENTS  */}
-      <section className="bg-[#f9f9f9] py-10 w-full">
-        <div className="max-w-[1400px] mx-auto overflow-hidden px-4">
-          <div className="flex gap-[60px] w-max animate-[scrollX_20s_linear_infinite] py-6">
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_gmobile}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_mobicom}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_skytel}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_голомт_банк}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_хаан_банк}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_хас_банк}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_оюу_толгой}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_төрийн_банк}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_gmobile}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-            <div className="w-40 h-20 flex items-center justify-center shrink-0">
-              <img
-                src={logos_mobicom}
-                alt="client"
-                className="max-h-full max-w-full object-contain grayscale opacity-80 transition duration-300 hover:grayscale-0 hover:opacity-100"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* social media  */}
       {/* <section className="py-12">
@@ -575,7 +654,6 @@ const Home = () => {
         <div className="max-w-[1400px] mx-auto px-5 gap-12 lg:gap-16 flex flex-col lg:flex-row items-center">
           {/* Зүүн тал: бүтээгдэхүүн + засаглал (dashed тойрог + төв дүгээр) */}
           <div className="flex-1 w-full relative min-h-[380px] flex items-center justify-center">
-            
             <div className="w-full h-full  overflow-hidden shadow-lg  ">
               <img src={design} alt="" className="w-full h-full object-cover" />
             </div>
@@ -584,27 +662,33 @@ const Home = () => {
           {/* Баруун тал: текст + CTA (z-10 нь gradient overlay-ийн дээр текст гаргана) */}
           <div className="flex-1 w-full pl-0 lg:pl-4 relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
-            Таны хэвлэлийн бүх хэрэгцээг нэг дор шийднэ
+              Таны хэвлэлийн бүх хэрэгцээг нэг дор шийднэ
             </h2>
             <p className="text-gray-500 text-base md:text-lg mb-2 max-w-lg">
-            Дизайн, хэвлэл, хүргэлтийн цогц үйлчилгээг нэг дороос авч,
-            таны бүтээгдэхүүн болон брэндийг илүү чанартайгаар хэрэглэгчдэд хүргэнэ.
+              Дизайн, хэвлэл, хүргэлтийн цогц үйлчилгээг нэг дороос авч, таны
+              бүтээгдэхүүн болон брэндийг илүү чанартайгаар хэрэглэгчдэд
+              хүргэнэ.
             </p>
             <div className="flex flex-col gap-4 mb-8">
               <div>
                 <div className="flex items-center text-xl gap-2">
-                <i class="fa-solid fa-check-double text-[var(--secondary-color)]"></i>
-                  <h3 className="text-lg font-semibold text-gray-900 ">Дизайн</h3>
+                  <i class="fa-solid fa-check-double text-[var(--secondary-color)]"></i>
+                  <h3 className="text-lg font-semibold text-gray-900 ">
+                    Дизайн
+                  </h3>
                 </div>
-                
+
                 <p className="text-gray-600 px-6 text-sm leading-relaxed">
-                  Мэргэжлийн дизайн үйлчилгээ, брэндийн өнгө төрхийг нэг мөр болгоно.
+                  Мэргэжлийн дизайн үйлчилгээ, брэндийн өнгө төрхийг нэг мөр
+                  болгоно.
                 </p>
               </div>
               <div>
                 <div className="flex items-center text-xl gap-2">
-                <i class="fa-solid fa-check-double text-[var(--secondary-color)]"></i>
-                  <h3 className="text-lg font-semibold text-gray-900">Хэвлэл</h3>
+                  <i class="fa-solid fa-check-double text-[var(--secondary-color)]"></i>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Хэвлэл
+                  </h3>
                 </div>
                 <p className="text-gray-600 text-sm px-6  leading-relaxed">
                   Өндөр чанартай хэвлэл үйлдвэрлэл, өнгөний нарийн хяналттай.
@@ -612,13 +696,15 @@ const Home = () => {
               </div>
               <div>
                 <div className="flex items-center text-xl gap-2">
-                <i class="fa-solid fa-check-double text-[var(--secondary-color)]"></i>
-                  <h3 className="text-lg font-semibold text-gray-900">Хүргэлт</h3>
+                  <i class="fa-solid fa-check-double text-[var(--secondary-color)]"></i>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    Хүргэлт
+                  </h3>
                 </div>
                 <p className="text-gray-600 text-sm px-6  leading-relaxed">
                   Хурдан, найдвартай хүргэлт — хугацаандаа, аюулгүй хүргэнэ.
                 </p>
-                </div>
+              </div>
             </div>
           </div>
         </div>
